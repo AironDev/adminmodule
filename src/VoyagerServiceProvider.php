@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager;
+namespace Modules\Admin;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,19 +16,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageServiceProvider;
-use TCG\Voyager\Events\FormFieldsRegistered;
-use TCG\Voyager\Facades\Voyager as VoyagerFacade;
-use TCG\Voyager\FormFields\After\DescriptionHandler;
-use TCG\Voyager\Http\Middleware\VoyagerAdminMiddleware;
-use TCG\Voyager\Models\MenuItem;
-use TCG\Voyager\Models\Setting;
-use TCG\Voyager\Policies\BasePolicy;
-use TCG\Voyager\Policies\MenuItemPolicy;
-use TCG\Voyager\Policies\SettingPolicy;
-use TCG\Voyager\Providers\VoyagerDummyServiceProvider;
-use TCG\Voyager\Providers\VoyagerEventServiceProvider;
-use TCG\Voyager\Seed;
-use TCG\Voyager\Translator\Collection as TranslatorCollection;
+use Modules\Admin\Events\FormFieldsRegistered;
+use Modules\Admin\Facades\Voyager as VoyagerFacade;
+use Modules\Admin\FormFields\After\DescriptionHandler;
+use Modules\Admin\Http\Middleware\VoyagerAdminMiddleware;
+use Modules\Admin\Models\MenuItem;
+use Modules\Admin\Models\Setting;
+use Modules\Admin\Policies\BasePolicy;
+use Modules\Admin\Policies\MenuItemPolicy;
+use Modules\Admin\Policies\SettingPolicy;
+use Modules\Admin\Providers\VoyagerDummyServiceProvider;
+use Modules\Admin\Providers\VoyagerEventServiceProvider;
+use Modules\Admin\Seed;
+use Modules\Admin\Translator\Collection as TranslatorCollection;
 
 class VoyagerServiceProvider extends ServiceProvider
 {
@@ -337,7 +337,7 @@ class VoyagerServiceProvider extends ServiceProvider
         foreach ($formFields as $formField) {
             $class = Str::studly("{$formField}_handler");
 
-            VoyagerFacade::addFormField("TCG\\Voyager\\FormFields\\{$class}");
+            VoyagerFacade::addFormField("Modules\\Admin\\FormFields\\{$class}");
         }
 
         VoyagerFacade::addAfterFormField(DescriptionHandler::class);

@@ -41,7 +41,7 @@
 }
 [dir="rtl"] .voyager div.dataTables_paginate li.previous a::before {
     content: "\e046";
-    font-family: Voyager;
+    font-family: AdminModule;
     right: 10px;
     left: auto;
 }
@@ -58,7 +58,7 @@
 }
 [dir="rtl"] .voyager div.dataTables_paginate li.next a::after {
     content: "\e039";
-    font-family: Voyager;
+    font-family: AdminModule;
     left: 10px;
     right: auto;
 }
@@ -86,7 +86,7 @@
     padding: 0 5px;
 }
 [dir="rtl"] .breadcrumb > li + li:after {
-    font-family: Voyager;
+    font-family: AdminModule;
     content: '\e039';
     position: relative;
     top: 1px;

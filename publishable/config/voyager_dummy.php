@@ -90,7 +90,7 @@ return [
     | Multilingual configuration
     |--------------------------------------------------------------------------
     |
-    | Here you can specify if you want Voyager to ship with support for
+    | Here you can specify if you want AdminModule to ship with support for
     | multilingual and what locales are enabled.
     |
     */
@@ -156,7 +156,7 @@ return [
     | Automatic Procedures
     |--------------------------------------------------------------------------
     |
-    | When a change happens on Voyager, we can automate some routines.
+    | When a change happens on AdminModule, we can automate some routines.
     |
     */
 
@@ -179,7 +179,7 @@ return [
     | UI Generic Config
     |--------------------------------------------------------------------------
     |
-    | Here you change some of the Voyager UI settings.
+    | Here you change some of the AdminModule UI settings.
     |
     */
 

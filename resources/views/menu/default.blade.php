@@ -2,7 +2,7 @@
 
 @php
 
-    if (Voyager::translatable($items)) {
+    if (AdminModule::translatable($items)) {
         $items = $items->load('translations');
     }
 
@@ -13,7 +13,7 @@
     @php
 
         $originalItem = $item;
-        if (Voyager::translatable($item)) {
+        if (AdminModule::translatable($item)) {
             $item = $item->translate($options->locale);
         }
 

@@ -3,7 +3,7 @@
 namespace Modules\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class Permission extends Model
 {
@@ -11,7 +11,7 @@ class Permission extends Model
 
     public function roles()
     {
-        return $this->belongsToMany(Voyager::modelClass('Role'));
+        return $this->belongsToMany(AdminModule::modelClass('Role'));
     }
 
     public static function generateFor($table_name)

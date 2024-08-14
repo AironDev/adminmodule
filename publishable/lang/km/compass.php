@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => 'សូមស្វាគមន៍មកកាន់ Voyager Compass ។ កម្មវិធីល្អនីមួយៗត្រូវការត្រីវិស័យដើម្បីចង្អុលពួកវាទៅទិសដៅត្រឹមត្រូវ។
+    'welcome'                => 'សូមស្វាគមន៍មកកាន់ AdminModule Compass ។ កម្មវិធីល្អនីមួយៗត្រូវការត្រីវិស័យដើម្បីចង្អុលពួកវាទៅទិសដៅត្រឹមត្រូវ។
      នៅក្នុងផ្នែកនេះ អ្នកនឹងរកឃើញធនធាន និងកិច្ចការរដ្ឋបាលជាច្រើន ដើម្បីជួយណែនាំអ្នកនៅពេលអ្នកបង្កើតកម្មវិធីរបស់អ្នក។',
     'links'         => [
         'title'                 => 'តំណរភ្ជាប់',
         'documentation'         => 'ឯកសារ',
-        'voyager_homepage'      => 'គេហទំព័រ Voyager',
+        'voyager_homepage'      => 'គេហទំព័រ AdminModule',
     ],
     'commands'      => [
         'title'                 => 'ការបញ្ជារ',
-        'text'                  => 'ដំណើរការ Command ពី Voyager.',
+        'text'                  => 'ដំណើរការ Command ពី AdminModule.',
         'clear_output'          => 'សម្អាតលទ្ធផល',
         'command_output'        => 'លទ្ធផលនៃ Command',
         'additional_args'       => 'បន្ថែមអាគុយម៉ង់?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'ធនធាន',
-        'text'                  => 'ធនធាន Voyager ដើម្បីជួយអ្នកស្វែងយល់បានលឿន',
+        'text'                  => 'ធនធាន AdminModule ដើម្បីជួយអ្នកស្វែងយល់បានលឿន',
 
     ],
     'logs'          => [
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'ពុម្ពអក្សរ',
-        'font_class'            => 'ពុម្ពអក្សរ Voyager',
-        'font_character'        => 'តួអក្សរ Voyager',
+        'font_class'            => 'ពុម្ពអក្សរ AdminModule',
+        'font_character'        => 'តួអក្សរ AdminModule',
     ],
 ];

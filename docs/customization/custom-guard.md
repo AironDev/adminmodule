@@ -1,12 +1,12 @@
 # Custom guard
 
-Starting with Voyager 1.2 you can define a \(custom\) guard which is used throughout Voyager.  
-To do so, just bind the name of your auth-guard to `VoyagerGuard`.  
+Starting with AdminModule 1.2 you can define a \(custom\) guard which is used throughout AdminModule.  
+To do so, just bind the name of your auth-guard to `AdminModuleGuard`.  
 First, make sure you have defined a guard as per the [Laravel documentation](https://laravel.com/docs/authentication#adding-custom-guards).  
 After that open your `AuthServiceProvider` and add the following to the register method:
 
 ```php
-$this->app->singleton('VoyagerGuard', function () {
+$this->app->singleton('AdminModuleGuard', function () {
     return 'your-custom-guard-name';
 });
 ```
@@ -33,7 +33,7 @@ Schema::create('admins', function (Blueprint $table) {
 });
 ```
 
-and a model which extends Voyagers user-model:
+and a model which extends AdminModules user-model:
 
 ```php
 <?php
@@ -69,13 +69,13 @@ And a user provider called `admins`:
 ],
 ```
 
-Next you have to tell Voyager to use your new guard.  
+Next you have to tell AdminModule to use your new guard.  
 Open you `AppServiceProvider.php` and add the following to the `register` method:
 
 ```php
 public function register()
 {
-    $this->app->singleton('VoyagerGuard', function () {
+    $this->app->singleton('AdminModuleGuard', function () {
         return 'admin';
     });
 }

@@ -17,20 +17,20 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageServiceProvider;
 use Modules\Admin\Events\FormFieldsRegistered;
-use Modules\Admin\Facades\Voyager as VoyagerFacade;
+use Modules\Admin\Facades\AdminModule as AdminModuleFacade;
 use Modules\Admin\FormFields\After\DescriptionHandler;
-use Modules\Admin\Http\Middleware\VoyagerAdminMiddleware;
+use Modules\Admin\Http\Middleware\AdminModuleAdminMiddleware;
 use Modules\Admin\Models\MenuItem;
 use Modules\Admin\Models\Setting;
 use Modules\Admin\Policies\BasePolicy;
 use Modules\Admin\Policies\MenuItemPolicy;
 use Modules\Admin\Policies\SettingPolicy;
-use Modules\Admin\Providers\VoyagerDummyServiceProvider;
-use Modules\Admin\Providers\VoyagerEventServiceProvider;
+use Modules\Admin\Providers\AdminModuleDummyServiceProvider;
+use Modules\Admin\Providers\AdminModuleEventServiceProvider;
 use Modules\Admin\Seed;
 use Modules\Admin\Translator\Collection as TranslatorCollection;
 
-class VoyagerServiceProvider extends ServiceProvider
+class AdminModuleServiceProvider extends ServiceProvider
 {
     /**
      * The policy mappings for the application.
@@ -55,18 +55,18 @@ class VoyagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(VoyagerEventServiceProvider::class);
+        $this->app->register(AdminModuleEventServiceProvider::class);
         $this->app->register(ImageServiceProvider::class);
-        $this->app->register(VoyagerDummyServiceProvider::class);
+        $this->app->register(AdminModuleDummyServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
-        $loader->alias('Voyager', VoyagerFacade::class);
+        $loader->alias('AdminModule', AdminModuleFacade::class);
 
         $this->app->singleton('voyager', function () {
-            return new Voyager();
+            return new AdminModule();
         });
 
-        $this->app->singleton('VoyagerGuard', function () {
+        $this->app->singleton('AdminModuleGuard', function () {
             return config('auth.defaults.guard', 'web');
         });
 
@@ -95,7 +95,7 @@ class VoyagerServiceProvider extends ServiceProvider
     public function boot(Router $router, Dispatcher $event)
     {
         if (config('voyager.user.add_default_role_on_register')) {
-            $model = Auth::guard(app('VoyagerGuard'))->getProvider()->getModel();
+            $model = Auth::guard(app('AdminModuleGuard'))->getProvider()->getModel();
             call_user_func($model.'::created', function ($user) use ($model) {
                 if (is_null($user->role_id)) {
                     call_user_func($model.'::findOrFail', $user->id)
@@ -107,7 +107,7 @@ class VoyagerServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'voyager');
 
-        $router->aliasMiddleware('admin.user', VoyagerAdminMiddleware::class);
+        $router->aliasMiddleware('admin.user', AdminModuleAdminMiddleware::class);
 
         $this->loadTranslationsFrom(realpath(__DIR__.'/../publishable/lang'), 'voyager');
 
@@ -151,7 +151,7 @@ class VoyagerServiceProvider extends ServiceProvider
     {
         // Register alerts
         View::composer('voyager::*', function ($view) {
-            $view->with('alerts', VoyagerFacade::alerts());
+            $view->with('alerts', AdminModuleFacade::alerts());
         });
     }
 
@@ -189,7 +189,7 @@ class VoyagerServiceProvider extends ServiceProvider
                     ->title(__('voyager::error.symlink_missing_title'))
                     ->text(__('voyager::error.symlink_missing_text'))
                     ->button(__('voyager::error.symlink_missing_button'), '?fix-missing-storage-symlink=1');
-                VoyagerFacade::addAlert($alert);
+                AdminModuleFacade::addAlert($alert);
             }
         }
     }
@@ -208,7 +208,7 @@ class VoyagerServiceProvider extends ServiceProvider
                 ->text(__('voyager::error.symlink_failed_text'));
         }
 
-        VoyagerFacade::addAlert($alert);
+        AdminModuleFacade::addAlert($alert);
     }
 
     /**
@@ -219,7 +219,7 @@ class VoyagerServiceProvider extends ServiceProvider
         $components = ['title', 'text', 'button'];
 
         foreach ($components as $component) {
-            $class = 'TCG\\Voyager\\Alert\\Components\\'.ucfirst(Str::camel($component)).'Component';
+            $class = 'TCG\\AdminModule\\Alert\\Components\\'.ucfirst(Str::camel($component)).'Component';
 
             $this->app->bind("voyager.alert.components.{$component}", $class);
         }
@@ -279,8 +279,8 @@ class VoyagerServiceProvider extends ServiceProvider
         // otherwise it will throw an error because no database
         // connection has been made yet.
         try {
-            if (Schema::hasTable(VoyagerFacade::model('DataType')->getTable())) {
-                $dataType = VoyagerFacade::model('DataType');
+            if (Schema::hasTable(AdminModuleFacade::model('DataType')->getTable())) {
+                $dataType = AdminModuleFacade::model('DataType');
                 $dataTypes = $dataType->select('policy_name', 'model_name')->get();
 
                 foreach ($dataTypes as $dataType) {
@@ -296,7 +296,7 @@ class VoyagerServiceProvider extends ServiceProvider
                 $this->registerPolicies();
             }
         } catch (\PDOException $e) {
-            Log::info('No database connection yet in VoyagerServiceProvider loadAuth(). No worries, this is not a problem!');
+            Log::info('No database connection yet in AdminModuleServiceProvider loadAuth(). No worries, this is not a problem!');
         }
 
         // Gates
@@ -337,10 +337,10 @@ class VoyagerServiceProvider extends ServiceProvider
         foreach ($formFields as $formField) {
             $class = Str::studly("{$formField}_handler");
 
-            VoyagerFacade::addFormField("Modules\\Admin\\FormFields\\{$class}");
+            AdminModuleFacade::addFormField("Modules\\Admin\\FormFields\\{$class}");
         }
 
-        VoyagerFacade::addAfterFormField(DescriptionHandler::class);
+        AdminModuleFacade::addAfterFormField(DescriptionHandler::class);
 
         event(new FormFieldsRegistered($formFields));
     }

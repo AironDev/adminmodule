@@ -5,7 +5,7 @@ namespace Modules\Admin\Tests;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Orchestra\Testbench\BrowserKit\TestCase as OrchestraTestCase;
 use Modules\Admin\Models\User;
-use Modules\Admin\VoyagerServiceProvider;
+use Modules\Admin\AdminModuleServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -47,7 +47,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            VoyagerServiceProvider::class,
+            AdminModuleServiceProvider::class,
         ];
     }
 
@@ -75,7 +75,7 @@ class TestCase extends OrchestraTestCase
             'prefix'   => '',
         ]);
 
-        // Setup Voyager configuration
+        // Setup AdminModule configuration
         $app['config']->set('voyager.user.namespace', User::class);
 
         // Setup Authentication configuration
@@ -86,7 +86,7 @@ class TestCase extends OrchestraTestCase
     {
         $this->artisan('voyager:install', ['--with-dummy' => $this->withDummy]);
 
-        app(VoyagerServiceProvider::class, ['app' => $this->app])->loadAuth();
+        app(AdminModuleServiceProvider::class, ['app' => $this->app])->loadAuth();
 
         if (file_exists(base_path('routes/web.php'))) {
             require base_path('routes/web.php');

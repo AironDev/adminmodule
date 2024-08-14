@@ -1,6 +1,6 @@
 # Database Manager
 
-Voyager has some awesome database tools which allow you to Add/Edit/Delete or view current database tables. The other cool part of Voyager is that you can add BREAD or \(Browse, Read, Edit, Add, & Delete\) functionality to any of your tables.
+AdminModule has some awesome database tools which allow you to Add/Edit/Delete or view current database tables. The other cool part of AdminModule is that you can add BREAD or \(Browse, Read, Edit, Add, & Delete\) functionality to any of your tables.
 
 ![](../.gitbook/assets/database-manager.png)
 

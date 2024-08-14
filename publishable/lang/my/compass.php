@@ -1,18 +1,18 @@
 <?php
 
 return [
-    'welcome'                => 'Voyager Compass မှလှိုက်လှဲစွာကြိုဆိုပါသည်။ ကောင်းမွန်သော application တစ်ခုစီတိုင်းသည် လမ်းကြောင်းမှန်သို့ညွှန်ပြသော
+    'welcome'                => 'AdminModule Compass မှလှိုက်လှဲစွာကြိုဆိုပါသည်။ ကောင်းမွန်သော application တစ်ခုစီတိုင်းသည် လမ်းကြောင်းမှန်သို့ညွှန်ပြသော
     သံလိုက်အိမ်မြှောင်တစ်ခု လိုအပ်ပါသည်။
     သင့်အက်ပ်လီကေးရှင်းကို တည်ဆောက်ရာတွင် ကူညီရန်အတွက် ဤကဏ္ဍသည် အရင်းအမြစ်များနှင့် စီမံခန့်ခွဲရေးဆိုင်ရာ အလုပ်များစွာကို
     မိတ်ဆက်ပေးပါသည်။',
     'links'         => [
         'title'                 => 'Links',
         'documentation'         => 'စာရွက်စာတမ်း (အင်္ဂလိပ်ဆိုက်)',
-        'voyager_homepage'      => 'Voyager ပင်မစာမျက်နှာ (အင်္ဂလိပ်ဆိုက်)',
+        'voyager_homepage'      => 'AdminModule ပင်မစာမျက်နှာ (အင်္ဂလိပ်ဆိုက်)',
     ],
     'commands'      => [
         'title'                 => 'Commands',
-        'text'                  => 'Voyager မှ Artisan command ကိုဖွင့်ပါ။',
+        'text'                  => 'AdminModule မှ Artisan command ကိုဖွင့်ပါ။',
         'clear_output'          => 'အထွက်ကိုရှင်းလင်းပါ။',
         'command_output'        => 'Artisan Command Output',
         'additional_args'       => 'အငြင်းအခုံတစ်ခုကို ထည့်လိုပါသလား။',
@@ -20,7 +20,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Resources',
-        'text'                  => 'Voyager အရင်းအမြစ်များသည် သင်ရှာဖွေနေသည့်အရာကို ပိုမိုမြန်ဆန်စွာရှာဖွေရန် ကူညီပေးပါသည်။',
+        'text'                  => 'AdminModule အရင်းအမြစ်များသည် သင်ရှာဖွေနေသည့်အရာကို ပိုမိုမြန်ဆန်စွာရှာဖွေရန် ကူညီပေးပါသည်။',
 
     ],
     'logs'          => [
@@ -40,7 +40,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Fonts',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'AdminModule Fonts Class Mapping',
+        'font_character'        => 'AdminModule Fonts Character Mapping',
     ],
 ];

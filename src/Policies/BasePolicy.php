@@ -4,7 +4,7 @@ namespace Modules\Admin\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Admin\Contracts\User;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class BasePolicy
 {
@@ -77,7 +77,7 @@ class BasePolicy
     {
         $model_name = get_class($model);
         if (!isset(self::$datatypes[$model_name])) {
-            $dataType = Voyager::model('DataType');
+            $dataType = AdminModule::model('DataType');
             self::$datatypes[$model_name] = $dataType->where('model_name', $model_name)->first();
         }
 

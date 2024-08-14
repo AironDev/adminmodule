@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => '歡迎來到 Voyager Compass。每個應用都需要一個指南針來指向正確的方向。
+    'welcome'                => '歡迎來到 AdminModule Compass。每個應用都需要一個指南針來指向正確的方向。
      在本節中，您將找到許多資源和管理任務，以幫助您在建立應用時為您提供方向。',
     'links'         => [
         'title'                 => '連接',
         'documentation'         => '文件',
-        'voyager_homepage'      => 'Voyager 官網',
+        'voyager_homepage'      => 'AdminModule 官網',
     ],
     'commands'      => [
         'title'                 => '指令',
-        'text'                  => '透過 Voyager 運行 Artisan 指令',
+        'text'                  => '透過 AdminModule 運行 Artisan 指令',
         'clear_output'          => '清除輸出',
         'command_output'        => 'Artisan 指令輸出',
         'additional_args'       => '多餘參數？',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => '資源',
-        'text'                  => 'Voyager 資源幫助您更快找到需要的東西',
+        'text'                  => 'AdminModule 資源幫助您更快找到需要的東西',
 
     ],
     'logs'          => [
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => '字體',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'AdminModule Fonts Class Mapping',
+        'font_character'        => 'AdminModule Fonts Character Mapping',
     ],
 ];

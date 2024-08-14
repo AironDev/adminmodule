@@ -124,7 +124,7 @@
                                                 @elseif (isset($row->details->view))
                                                     @include($row->details->view, ['row' => $row, 'dataType' => $dataType, 'dataTypeContent' => $dataTypeContent, 'content' => $data->{$row->field}, 'action' => 'browse', 'view' => 'browse', 'options' => $row->details])
                                                 @elseif($row->type == 'image')
-                                                    <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
+                                                    <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ AdminModule::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:100px">
                                                 @elseif($row->type == 'relationship')
                                                     @include('voyager::formfields.relationship', ['view' => 'browse','options' => $row->details])
                                                 @elseif($row->type == 'select_multiple')
@@ -209,7 +209,7 @@
                                                     @if($images)
                                                         @php $images = array_slice($images, 0, 3); @endphp
                                                         @foreach($images as $image)
-                                                            <img src="@if( !filter_var($image, FILTER_VALIDATE_URL)){{ Voyager::image( $image ) }}@else{{ $image }}@endif" style="width:50px">
+                                                            <img src="@if( !filter_var($image, FILTER_VALIDATE_URL)){{ AdminModule::image( $image ) }}@else{{ $image }}@endif" style="width:50px">
                                                         @endforeach
                                                     @endif
                                                 @elseif($row->type == 'media_picker')
@@ -223,7 +223,7 @@
                                                     @if ($files)
                                                         @if (property_exists($row->details, 'show_as_images') && $row->details->show_as_images)
                                                             @foreach (array_slice($files, 0, 3) as $file)
-                                                            <img src="@if( !filter_var($file, FILTER_VALIDATE_URL)){{ Voyager::image( $file ) }}@else{{ $file }}@endif" style="width:50px">
+                                                            <img src="@if( !filter_var($file, FILTER_VALIDATE_URL)){{ AdminModule::image( $file ) }}@else{{ $file }}@endif" style="width:50px">
                                                             @endforeach
                                                         @else
                                                             <ul>
@@ -239,7 +239,7 @@
                                                         {{ trans_choice('voyager::media.files', 0) }}
                                                     @elseif ($data->{$row->field} != '')
                                                         @if (property_exists($row->details, 'show_as_images') && $row->details->show_as_images)
-                                                            <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ Voyager::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:50px">
+                                                            <img src="@if( !filter_var($data->{$row->field}, FILTER_VALIDATE_URL)){{ AdminModule::image( $data->{$row->field} ) }}@else{{ $data->{$row->field} }}@endif" style="width:50px">
                                                         @else
                                                             {{ $data->{$row->field} }}
                                                         @endif

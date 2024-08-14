@@ -3,7 +3,7 @@
 namespace Modules\Admin\Listeners;
 
 use Modules\Admin\Events\BreadDeleted;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class DeleteBreadMenuItem
 {
@@ -27,7 +27,7 @@ class DeleteBreadMenuItem
     public function handle(BreadDeleted $bread)
     {
         if (config('voyager.bread.add_menu_item')) {
-            $menuItem = Voyager::model('MenuItem')->where('route', 'voyager.'.$bread->dataType->slug.'.index');
+            $menuItem = AdminModule::model('MenuItem')->where('route', 'voyager.'.$bread->dataType->slug.'.index');
 
             if ($menuItem->exists()) {
                 $menuItem->delete();

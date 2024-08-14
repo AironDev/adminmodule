@@ -31,7 +31,7 @@ use Modules\Admin\Models\Translation;
 use Modules\Admin\Models\User;
 use Modules\Admin\Traits\Translatable;
 
-class Voyager
+class AdminModule
 {
     protected $version;
     protected $filesystem;

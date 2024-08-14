@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => 'Bienvenue sur Voyager Compass. Chaque nouvelle application a besoin d\'une boussole pour se diriger dans la bonne direction.
+    'welcome'                => 'Bienvenue sur AdminModule Compass. Chaque nouvelle application a besoin d\'une boussole pour se diriger dans la bonne direction.
     Dans cette section, vous trouverez plusieurs ressources et tâches administratives afin de vous guider lors de la création de votre application',
     'links'         => [
         'title'                 => 'Liens',
         'documentation'         => 'Documentation',
-        'voyager_homepage'      => 'Voyager Homepage',
+        'voyager_homepage'      => 'AdminModule Homepage',
     ],
     'commands'      => [
         'title'                 => 'Commandes',
-        'text'                  => 'Lancer les Commandes artisan depuis Voyager.',
+        'text'                  => 'Lancer les Commandes artisan depuis AdminModule.',
         'clear_output'          => 'Vider la sortie',
         'command_output'        => 'Sortie des commandes Artisan',
         'additional_args'       => 'Arguments additionnels ?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Ressources',
-        'text'                  => 'Ressources Voyager pour vous aider a trouver certaines choses plus vite.',
+        'text'                  => 'Ressources AdminModule pour vous aider a trouver certaines choses plus vite.',
     ],
     'logs'          => [
         'title'                 => 'Logs',
@@ -37,7 +37,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Police de caractère',
-        'font_class'            => 'Classe de correspondance à la police Voyager',
-        'font_character'        => 'Caractère de correspondance à la police Voyager',
+        'font_class'            => 'Classe de correspondance à la police AdminModule',
+        'font_character'        => 'Caractère de correspondance à la police AdminModule',
     ],
 ];

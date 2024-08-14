@@ -6,7 +6,7 @@ return [
     'links'         => [
         'title'                 => 'リンク',
         'documentation'         => 'ドキュメント(英語サイト)',
-        'voyager_homepage'      => 'Voyager ホームページ (英語サイト)',
+        'voyager_homepage'      => 'AdminModule ホームページ (英語サイト)',
     ],
     'commands'      => [
         'title'                 => 'コマンド',
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'フォント',
-        'font_class'            => 'Voyager Fonts Class マッピング',
-        'font_character'        => 'Voyager Fonts Character マッピング',
+        'font_class'            => 'AdminModule Fonts Class マッピング',
+        'font_character'        => 'AdminModule Fonts Character マッピング',
     ],
 ];

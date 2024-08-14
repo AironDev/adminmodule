@@ -5,7 +5,7 @@ namespace Modules\Admin\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Traits\Resizable;
 use Modules\Admin\Traits\Translatable;
 
@@ -32,7 +32,7 @@ class Post extends Model
 
     public function authorId()
     {
-        return $this->belongsTo(Voyager::modelClass('User'), 'author_id', 'id');
+        return $this->belongsTo(AdminModule::modelClass('User'), 'author_id', 'id');
     }
 
     /**
@@ -52,6 +52,6 @@ class Post extends Model
      */
     public function category()
     {
-        return $this->belongsTo(Voyager::modelClass('Category'));
+        return $this->belongsTo(AdminModule::modelClass('Category'));
     }
 }

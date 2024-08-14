@@ -21,7 +21,7 @@ class ControllersCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Publish all the controllers from Voyager.';
+    protected $description = 'Publish all the controllers from AdminModule.';
 
     /**
      * The Filesystem instance.
@@ -94,7 +94,7 @@ class ControllersCommand extends Command
             }
         }
 
-        $this->info('Published Voyager controllers!');
+        $this->info('Published AdminModule controllers!');
     }
 
     /**

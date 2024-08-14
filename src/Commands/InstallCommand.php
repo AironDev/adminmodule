@@ -6,8 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Symfony\Component\Console\Input\InputOption;
-use Modules\Admin\Providers\VoyagerDummyServiceProvider;
-use Modules\Admin\VoyagerServiceProvider;
+use Modules\Admin\Providers\AdminModuleDummyServiceProvider;
+use Modules\Admin\AdminModuleServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -23,7 +23,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Install the Voyager Admin package';
+    protected $description = 'Install the AdminModule Admin package';
 
     /**
      * The Composer instance.
@@ -84,17 +84,17 @@ class InstallCommand extends Command
      */
     public function handle(Filesystem $filesystem)
     {
-        $this->info('Publishing the Voyager assets, database, and config files');
+        $this->info('Publishing the AdminModule assets, database, and config files');
 
         // Publish only relevant resources on install
         $tags = ['seeders'];
 
-        $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class, '--tag' => $tags]);
+        $this->call('vendor:publish', ['--provider' => AdminModuleServiceProvider::class, '--tag' => $tags]);
 
         $this->info('Migrating the database tables into your application');
         $this->call('migrate', ['--force' => $this->option('force')]);
 
-        $this->info('Attempting to set Voyager User model as parent to App\User');
+        $this->info('Attempting to set AdminModule User model as parent to App\User');
         if (file_exists(app_path('User.php')) || file_exists(app_path('Models/User.php'))) {
             $userPath = file_exists(app_path('User.php')) ? app_path('User.php') : app_path('Models/User.php');
 
@@ -110,12 +110,12 @@ class InstallCommand extends Command
             $this->warn('You will need to update this manually.  Change "extends Authenticatable" to "extends \Modules\Admin\Models\User" in your User model');
         }
 
-        $this->info('Adding Voyager routes to routes/web.php');
+        $this->info('Adding AdminModule routes to routes/web.php');
         $routes_contents = $filesystem->get(base_path('routes/web.php'));
-        if (false === strpos($routes_contents, 'Voyager::routes()')) {
+        if (false === strpos($routes_contents, 'AdminModule::routes()')) {
             $filesystem->append(
                 base_path('routes/web.php'),
-                PHP_EOL.PHP_EOL."Route::group(['prefix' => 'admin'], function () {".PHP_EOL."    Voyager::routes();".PHP_EOL."});".PHP_EOL
+                PHP_EOL.PHP_EOL."Route::group(['prefix' => 'admin'], function () {".PHP_EOL."    AdminModule::routes();".PHP_EOL."});".PHP_EOL
             );
         }
 
@@ -124,29 +124,29 @@ class InstallCommand extends Command
         if ($this->option('with-dummy')) {
             $this->info('Publishing dummy content');
             $tags = ['dummy_seeders', 'dummy_content', 'dummy_config', 'dummy_migrations'];
-            $this->call('vendor:publish', ['--provider' => VoyagerDummyServiceProvider::class, '--tag' => $tags]);
+            $this->call('vendor:publish', ['--provider' => AdminModuleDummyServiceProvider::class, '--tag' => $tags]);
         } else {
-            $this->call('vendor:publish', ['--provider' => VoyagerServiceProvider::class, '--tag' => ['config', 'voyager_avatar']]);
+            $this->call('vendor:publish', ['--provider' => AdminModuleServiceProvider::class, '--tag' => ['config', 'voyager_avatar']]);
         }
 
         $this->info('Dumping the autoloaded files and reloading all new files');
         $this->composer->dumpAutoloads();
 
         $this->info('Seeding data into the database');
-        $this->call('db:seed', ['--class' => 'VoyagerDatabaseSeeder', '--force' => $this->option('force')]);
+        $this->call('db:seed', ['--class' => 'AdminModuleDatabaseSeeder', '--force' => $this->option('force')]);
 
         if ($this->option('with-dummy')) {
             $this->info('Migrating dummy tables');
             $this->call('migrate');
 
             $this->info('Seeding dummy data');
-            $this->call('db:seed', ['--class' => 'VoyagerDummyDatabaseSeeder', '--force' => $this->option('force')]);
+            $this->call('db:seed', ['--class' => 'AdminModuleDummyDatabaseSeeder', '--force' => $this->option('force')]);
         }
 
         $this->info('Adding the storage symlink to your public folder');
         $this->call('storage:link');
 
-        $this->info('Successfully installed Voyager! Enjoy');
+        $this->info('Successfully installed AdminModule! Enjoy');
     }
 
 }

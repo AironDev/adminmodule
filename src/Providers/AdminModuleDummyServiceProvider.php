@@ -6,7 +6,7 @@ use Arrilot\Widgets\ServiceProvider as WidgetServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Modules\Admin\Seed;
 
-class VoyagerDummyServiceProvider extends ServiceProvider
+class AdminModuleDummyServiceProvider extends ServiceProvider
 {
     /**
      * Register the application services.

@@ -3,7 +3,7 @@
 namespace Modules\Admin\Policies;
 
 use Modules\Admin\Contracts\User;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class MenuItemPolicy extends BasePolicy
 {
@@ -22,11 +22,11 @@ class MenuItemPolicy extends BasePolicy
     protected function checkPermission(User $user, $model, $action)
     {
         if (self::$permissions == null) {
-            self::$permissions = Voyager::model('Permission')->all();
+            self::$permissions = AdminModule::model('Permission')->all();
         }
 
         if (self::$datatypes == null) {
-            self::$datatypes = Voyager::model('DataType')::all()->keyBy('slug');
+            self::$datatypes = AdminModule::model('DataType')::all()->keyBy('slug');
         }
 
         $regex = str_replace('/', '\/', preg_quote(route('voyager.dashboard')));

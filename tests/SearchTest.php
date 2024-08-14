@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Modules\Admin\Http\Controllers\VoyagerBaseController;
+use Modules\Admin\Http\Controllers\AdminModuleBaseController;
 use Modules\Admin\Models\DataRow;
 use Modules\Admin\Models\DataType;
 use Modules\Admin\Models\Post;
@@ -121,7 +121,7 @@ class SearchTest extends TestCase
             return $stub;
         });
 
-        return (new VoyagerBaseController())->index($request);
+        return (new AdminModuleBaseController())->index($request);
     }
 
     protected function setupAuthorRelationship()

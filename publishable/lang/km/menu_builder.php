@@ -10,7 +10,7 @@ return [
     'dynamic_route'        => 'Dynamic Route',
     'edit_item'            => 'កែសម្រួលធាតុម៉ឺនុយ',
     'icon_class'           => 'ថ្នាក់រូបតំណាងពុម្ពអក្សរសម្រាប់ធាតុម៉ឺនុយ (ប្រើ',
-    'icon_class2'          => 'Voyager Font Class</a>)',
+    'icon_class2'          => 'AdminModule Font Class</a>)',
     'icon_class_ph'        => 'Icon Class (optional)',
     'item_route'           => 'Route សម្រាប់ធាតុម៉ឺនុយ',
     'item_title'           => 'ចំណងជើងនៃធាតុម៉ឺនុយ',

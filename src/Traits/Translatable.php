@@ -5,7 +5,7 @@ namespace Modules\Admin\Traits;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Models\Translation;
 use Modules\Admin\Translator;
 
@@ -32,7 +32,7 @@ trait Translatable
      */
     public function translations()
     {
-        return $this->hasMany(Voyager::model('Translation'), 'foreign_key', $this->getKeyName())
+        return $this->hasMany(AdminModule::model('Translation'), 'foreign_key', $this->getKeyName())
             ->where('table_name', $this->getTable())
             ->whereIn('locale', config('voyager.multilingual.locales', []));
     }

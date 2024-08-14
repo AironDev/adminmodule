@@ -12,15 +12,15 @@ use Modules\Admin\Database\Types\Type;
 use Modules\Admin\Events\BreadAdded;
 use Modules\Admin\Events\BreadDeleted;
 use Modules\Admin\Events\BreadUpdated;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerBreadController extends Controller
+class AdminModuleBreadController extends Controller
 {
     public function index()
     {
         $this->authorize('browse_bread');
 
-        $dataTypes = Voyager::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
+        $dataTypes = AdminModule::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
 
         $tables = array_map(function ($table) use ($dataTypes) {
             $table = Str::replaceFirst(DB::getTablePrefix(), '', $table);
@@ -35,7 +35,7 @@ class VoyagerBreadController extends Controller
             return (object) $table;
         }, SchemaManager::listTableNames());
 
-        return Voyager::view('voyager::tools.bread.index')->with(compact('dataTypes', 'tables'));
+        return AdminModule::view('voyager::tools.bread.index')->with(compact('dataTypes', 'tables'));
     }
 
     /**
@@ -50,7 +50,7 @@ class VoyagerBreadController extends Controller
     {
         $this->authorize('browse_bread');
 
-        $dataType = Voyager::model('DataType')->whereName($table)->first();
+        $dataType = AdminModule::model('DataType')->whereName($table)->first();
 
         $data = $this->prepopulateBreadInfo($table);
         $data['fieldOptions'] = SchemaManager::describeTable(
@@ -59,7 +59,7 @@ class VoyagerBreadController extends Controller
             : DB::getTablePrefix().$table
         );
 
-        return Voyager::view('voyager::tools.bread.edit-add', $data);
+        return AdminModule::view('voyager::tools.bread.edit-add', $data);
     }
 
     private function prepopulateBreadInfo($table)
@@ -94,7 +94,7 @@ class VoyagerBreadController extends Controller
         $this->authorize('browse_bread');
 
         try {
-            $dataType = Voyager::model('DataType');
+            $dataType = AdminModule::model('DataType');
             $res = $dataType->updateDataType($request->all(), true);
             $data = $res
                 ? $this->alertSuccess(__('voyager::bread.success_created_bread'))
@@ -120,7 +120,7 @@ class VoyagerBreadController extends Controller
     {
         $this->authorize('browse_bread');
 
-        $dataType = Voyager::model('DataType')->whereName($table)->first();
+        $dataType = AdminModule::model('DataType')->whereName($table)->first();
 
         $fieldOptions = SchemaManager::describeTable(
             (strlen($dataType->model_name) != 0)
@@ -130,13 +130,13 @@ class VoyagerBreadController extends Controller
 
         $isModelTranslatable = is_bread_translatable($dataType);
         $tables = SchemaManager::listTableNames();
-        $dataTypeRelationships = Voyager::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
+        $dataTypeRelationships = AdminModule::model('DataRow')->where('data_type_id', '=', $dataType->id)->where('type', '=', 'relationship')->get();
         $scopes = [];
         if ($dataType->model_name != '') {
             $scopes = $this->getModelScopes($dataType->model_name);
         }
 
-        return Voyager::view('voyager::tools.bread.edit-add', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships', 'scopes'));
+        return AdminModule::view('voyager::tools.bread.edit-add', compact('dataType', 'fieldOptions', 'isModelTranslatable', 'tables', 'dataTypeRelationships', 'scopes'));
     }
 
     /**
@@ -153,7 +153,7 @@ class VoyagerBreadController extends Controller
 
         /* @var \Modules\Admin\Models\DataType $dataType */
         try {
-            $dataType = Voyager::model('DataType')->find($id);
+            $dataType = AdminModule::model('DataType')->find($id);
 
             // Prepare Translations and Transform data
             $translations = is_bread_translatable($dataType)
@@ -189,14 +189,14 @@ class VoyagerBreadController extends Controller
         $this->authorize('browse_bread');
 
         /* @var \Modules\Admin\Models\DataType $dataType */
-        $dataType = Voyager::model('DataType')->find($id);
+        $dataType = AdminModule::model('DataType')->find($id);
 
         // Delete Translations, if present
         if (is_bread_translatable($dataType)) {
             $dataType->deleteAttributeTranslations($dataType->getTranslatableAttributes());
         }
 
-        $res = Voyager::model('DataType')->destroy($id);
+        $res = AdminModule::model('DataType')->destroy($id);
         $data = $res
             ? $this->alertSuccess(__('voyager::bread.success_remove_bread', ['datatype' => $dataType->name]))
             : $this->alertError(__('voyager::bread.error_updating_bread'));
@@ -205,7 +205,7 @@ class VoyagerBreadController extends Controller
         }
 
         if (!is_null($dataType)) {
-            Voyager::model('Permission')->removeFrom($dataType->name);
+            AdminModule::model('Permission')->removeFrom($dataType->name);
         }
 
         return redirect()->route('voyager.bread.index')->with($data);
@@ -270,7 +270,7 @@ class VoyagerBreadController extends Controller
                 'taggable'    => $request->relationship_taggable,
             ];
 
-            $className = Voyager::modelClass('DataRow');
+            $className = AdminModule::modelClass('DataRow');
             $newRow = new $className();
 
             $newRow->data_type_id = $request->data_type_id;
@@ -284,7 +284,7 @@ class VoyagerBreadController extends Controller
             }
 
             $newRow->details = $relationshipDetails;
-            $newRow->order = intval(Voyager::model('DataType')->find($request->data_type_id)->lastRow()->order) + 1;
+            $newRow->order = intval(AdminModule::model('DataType')->find($request->data_type_id)->lastRow()->order) + 1;
 
             if (!$newRow->save()) {
                 return back()->with([
@@ -320,18 +320,18 @@ class VoyagerBreadController extends Controller
     {
         // We need to make sure that we aren't creating an already existing field
 
-        $dataType = Voyager::model('DataType')->find($request->data_type_id);
+        $dataType = AdminModule::model('DataType')->find($request->data_type_id);
 
         $field = Str::singular($dataType->name).'_'.$request->relationship_type.'_'.Str::singular($request->relationship_table).'_relationship';
 
         $relationshipFieldOriginal = $relationshipField = strtolower($field);
 
-        $existingRow = Voyager::model('DataRow')->where('field', '=', $relationshipField)->first();
+        $existingRow = AdminModule::model('DataRow')->where('field', '=', $relationshipField)->first();
         $index = 1;
 
         while (isset($existingRow->id)) {
             $relationshipField = $relationshipFieldOriginal.'_'.$index;
-            $existingRow = Voyager::model('DataRow')->where('field', '=', $relationshipField)->first();
+            $existingRow = AdminModule::model('DataRow')->where('field', '=', $relationshipField)->first();
             $index += 1;
         }
 
@@ -347,7 +347,7 @@ class VoyagerBreadController extends Controller
      */
     public function deleteRelationship($id)
     {
-        Voyager::model('DataRow')->destroy($id);
+        AdminModule::model('DataRow')->destroy($id);
 
         return back()->with([
             'message'    => 'Successfully deleted relationship.',

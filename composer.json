@@ -52,8 +52,8 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Modules\\Admin\\VoyagerServiceProvider",
-        "Modules\\Admin\\Providers\\VoyagerDummyServiceProvider"
+        "Modules\\Admin\\AdminModuleServiceProvider",
+        "Modules\\Admin\\Providers\\AdminModuleDummyServiceProvider"
       ]
     }
   },

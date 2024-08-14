@@ -6,7 +6,7 @@ Action buttons are displayed when browsing a BREAD next to each row
 
 ![](../.gitbook/assets/action_buttons.jpg)
 
-You can add your own buttons very easily. First we will create an Action-class which extends Voyagers AbstractAction in app/Actions/MyAction.php
+You can add your own buttons very easily. First we will create an Action-class which extends AdminModules AbstractAction in app/Actions/MyAction.php
 
 ```php
 <?php
@@ -46,7 +46,7 @@ class MyAction extends AbstractAction
 }
 ```
 
-Next we need to tell Voyager that we want to use this action. For this open your `app/Providers/AppServiceProvider.php` and search for the `boot()` method
+Next we need to tell AdminModule that we want to use this action. For this open your `app/Providers/AppServiceProvider.php` and search for the `boot()` method
 
 ```php
 <?php
@@ -55,13 +55,13 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Events\Dispatcher;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class AppServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Voyager::addAction(\App\Actions\MyAction::class);
+        AdminModule::addAction(\App\Actions\MyAction::class);
     }
 }
 ```

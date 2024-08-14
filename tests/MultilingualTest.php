@@ -4,7 +4,7 @@ namespace Modules\Admin\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Models\Page;
 use Modules\Admin\Traits\Translatable;
 use Modules\Admin\Translator;
@@ -25,14 +25,14 @@ class MultilingualTest extends TestCase
 
     public function testCheckingModelIsTranslatable()
     {
-        $this->assertTrue(Voyager::translatable(TranslatableModel::class));
-        $this->assertTrue(Voyager::translatable(ActuallyTranslatableModel::class));
+        $this->assertTrue(AdminModule::translatable(TranslatableModel::class));
+        $this->assertTrue(AdminModule::translatable(ActuallyTranslatableModel::class));
     }
 
     public function testCheckingModelIsNotTranslatable()
     {
-        $this->assertFalse(Voyager::translatable(NotTranslatableModel::class));
-        $this->assertFalse(Voyager::translatable(StillNotTranslatableModel::class));
+        $this->assertFalse(AdminModule::translatable(NotTranslatableModel::class));
+        $this->assertFalse(AdminModule::translatable(StillNotTranslatableModel::class));
     }
 
     public function testGettingModelTranslatableAttributes()

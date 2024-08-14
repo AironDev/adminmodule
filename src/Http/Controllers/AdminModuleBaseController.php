@@ -13,10 +13,10 @@ use Modules\Admin\Events\BreadDataDeleted;
 use Modules\Admin\Events\BreadDataRestored;
 use Modules\Admin\Events\BreadDataUpdated;
 use Modules\Admin\Events\BreadImagesDeleted;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Http\Controllers\Traits\BreadRelationshipParser;
 
-class VoyagerBaseController extends Controller
+class AdminModuleBaseController extends Controller
 {
     use BreadRelationshipParser;
 
@@ -38,7 +38,7 @@ class VoyagerBaseController extends Controller
         $slug = $this->getSlug($request);
 
         // GET THE DataType based on the slug
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('browse', app($dataType->model_name));
@@ -146,7 +146,7 @@ class VoyagerBaseController extends Controller
         // Actions
         $actions = [];
         if (!empty($dataTypeContent->first())) {
-            foreach (Voyager::actions() as $action) {
+            foreach (AdminModule::actions() as $action) {
                 $action = new $action($dataType, $dataTypeContent->first());
 
                 if ($action->shouldActionDisplayOnDataType()) {
@@ -183,7 +183,7 @@ class VoyagerBaseController extends Controller
             $view = "voyager::$slug.browse";
         }
 
-        return Voyager::view($view, compact(
+        return AdminModule::view($view, compact(
             'actions',
             'dataType',
             'dataTypeContent',
@@ -218,7 +218,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         $isSoftDeleted = false;
 
@@ -263,7 +263,7 @@ class VoyagerBaseController extends Controller
             $view = "voyager::$slug.read";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
+        return AdminModule::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'isSoftDeleted'));
     }
 
     //***************************************
@@ -282,7 +282,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
@@ -323,7 +323,7 @@ class VoyagerBaseController extends Controller
             $view = "voyager::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return AdminModule::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     // POST BR(E)AD
@@ -331,7 +331,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Compatibility with Model binding.
         $id = $id instanceof \Illuminate\Database\Eloquent\Model ? $id->{$id->getKeyName()} : $id;
@@ -396,7 +396,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -424,7 +424,7 @@ class VoyagerBaseController extends Controller
             $view = "voyager::$slug.edit-add";
         }
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
+        return AdminModule::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
     }
 
     /**
@@ -438,7 +438,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));
@@ -481,7 +481,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Init array of IDs
         $ids = [];
@@ -534,7 +534,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $model = app($dataType->model_name);
@@ -591,7 +591,7 @@ class VoyagerBaseController extends Controller
             // GET multi value
             $multi = $request->get('multi');
 
-            $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+            $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
             // Load model and find record
             $model = app($dataType->model_name);
@@ -798,7 +798,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
@@ -821,7 +821,7 @@ class VoyagerBaseController extends Controller
 
         $display_column = $dataType->order_display_column;
 
-        $dataRow = Voyager::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
+        $dataRow = AdminModule::model('DataRow')->whereDataTypeId($dataType->id)->whereField($display_column)->first();
 
         $view = 'voyager::bread.order';
 
@@ -829,7 +829,7 @@ class VoyagerBaseController extends Controller
             $view = "voyager::$slug.order";
         }
 
-        return Voyager::view($view, compact(
+        return AdminModule::view($view, compact(
             'dataType',
             'display_column',
             'dataRow',
@@ -841,7 +841,7 @@ class VoyagerBaseController extends Controller
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
@@ -868,7 +868,7 @@ class VoyagerBaseController extends Controller
         }
 
         $slug = $this->getSlug($request);
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         $action = new $request->action($dataType, null);
 
@@ -888,7 +888,7 @@ class VoyagerBaseController extends Controller
         $page = $request->input('page');
         $on_page = 50;
         $search = $request->input('search', false);
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         $method = $request->input('method', 'add');
 

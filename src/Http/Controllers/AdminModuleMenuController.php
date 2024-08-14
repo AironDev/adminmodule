@@ -4,24 +4,24 @@ namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerMenuController extends Controller
+class AdminModuleMenuController extends Controller
 {
     public function builder($id)
     {
-        $menu = Voyager::model('Menu')->findOrFail($id);
+        $menu = AdminModule::model('Menu')->findOrFail($id);
 
         $this->authorize('edit', $menu);
 
-        $isModelTranslatable = is_bread_translatable(Voyager::model('MenuItem'));
+        $isModelTranslatable = is_bread_translatable(AdminModule::model('MenuItem'));
 
-        return Voyager::view('voyager::menus.builder', compact('menu', 'isModelTranslatable'));
+        return AdminModule::view('voyager::menus.builder', compact('menu', 'isModelTranslatable'));
     }
 
     public function delete_menu($menu, $id)
     {
-        $item = Voyager::model('MenuItem')->findOrFail($id);
+        $item = AdminModule::model('MenuItem')->findOrFail($id);
 
         $this->authorize('delete', $item);
 
@@ -39,7 +39,7 @@ class VoyagerMenuController extends Controller
 
     public function add_item(Request $request)
     {
-        $menu = Voyager::model('Menu');
+        $menu = AdminModule::model('Menu');
 
         $this->authorize('add', $menu);
 
@@ -48,16 +48,16 @@ class VoyagerMenuController extends Controller
         );
 
         unset($data['id']);
-        $data['order'] = Voyager::model('MenuItem')->highestOrderMenuItem();
+        $data['order'] = AdminModule::model('MenuItem')->highestOrderMenuItem();
 
         // Check if is translatable
-        $_isTranslatable = is_bread_translatable(Voyager::model('MenuItem'));
+        $_isTranslatable = is_bread_translatable(AdminModule::model('MenuItem'));
         if ($_isTranslatable) {
             // Prepare data before saving the menu
             $trans = $this->prepareMenuTranslations($data);
         }
 
-        $menuItem = Voyager::model('MenuItem')->create($data);
+        $menuItem = AdminModule::model('MenuItem')->create($data);
 
         // Save menu translations
         if ($_isTranslatable) {
@@ -79,7 +79,7 @@ class VoyagerMenuController extends Controller
             $request->except(['id'])
         );
 
-        $menuItem = Voyager::model('MenuItem')->findOrFail($id);
+        $menuItem = AdminModule::model('MenuItem')->findOrFail($id);
 
         $this->authorize('edit', $menuItem->menu);
 
@@ -110,7 +110,7 @@ class VoyagerMenuController extends Controller
     private function orderMenu(array $menuItems, $parentId)
     {
         foreach ($menuItems as $index => $menuItem) {
-            $item = Voyager::model('MenuItem')->findOrFail($menuItem->id);
+            $item = AdminModule::model('MenuItem')->findOrFail($menuItem->id);
             $item->order = $index + 1;
             $item->parent_id = $parentId;
             $item->save();

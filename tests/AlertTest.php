@@ -3,7 +3,7 @@
 namespace Modules\Admin\Tests;
 
 use Modules\Admin\Alert;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class AlertTest extends TestCase
 {
@@ -12,21 +12,21 @@ class AlertTest extends TestCase
         $alert = (new Alert('test', 'warning'))
             ->title('Title');
 
-        Voyager::addAlert($alert);
+        AdminModule::addAlert($alert);
 
-        $alerts = Voyager::alerts();
+        $alerts = AdminModule::alerts();
 
         $this->assertCount(1, $alerts);
     }
 
     public function testComponentRenders()
     {
-        Voyager::addAlert((new Alert('test', 'warning'))
+        AdminModule::addAlert((new Alert('test', 'warning'))
             ->title('Title')
             ->text('Text')
             ->button('Button', 'http://example.com', 'danger'));
 
-        $alerts = Voyager::alerts();
+        $alerts = AdminModule::alerts();
 
         $this->assertEquals('<strong>Title</strong>', $alerts[0]->components[0]->render());
         $this->assertEquals('<p>Text</p>', $alerts[0]->components[1]->render());
@@ -35,12 +35,12 @@ class AlertTest extends TestCase
 
     public function testAlertsRenders()
     {
-        Voyager::addAlert((new Alert('test', 'warning'))
+        AdminModule::addAlert((new Alert('test', 'warning'))
             ->title('Title')
             ->text('Text')
             ->button('Button', 'http://example.com', 'danger'));
 
-        Voyager::addAlert((new Alert('foo'))
+        AdminModule::addAlert((new Alert('foo'))
             ->title('Bar')
             ->text('Foobar')
             ->button('Link', 'http://example.org'));

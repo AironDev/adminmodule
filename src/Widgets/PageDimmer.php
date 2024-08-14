@@ -4,7 +4,7 @@ namespace Modules\Admin\Widgets;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class PageDimmer extends BaseDimmer
 {
@@ -21,7 +21,7 @@ class PageDimmer extends BaseDimmer
      */
     public function run()
     {
-        $count = Voyager::model('Page')->count();
+        $count = AdminModule::model('Page')->count();
         $string = trans_choice('voyager::dimmer.page', $count);
 
         return view('voyager::dimmer', array_merge($this->config, [
@@ -43,6 +43,6 @@ class PageDimmer extends BaseDimmer
      */
     public function shouldBeDisplayed()
     {
-        return Auth::user()->can('browse', Voyager::model('Page'));
+        return Auth::user()->can('browse', AdminModule::model('Page'));
     }
 }

@@ -1,5 +1,5 @@
 @php
-$dimmerGroups = Voyager::dimmers();
+$dimmerGroups = AdminModule::dimmers();
 @endphp
 
 @forelse($dimmerGroups as $dimmerGroup)

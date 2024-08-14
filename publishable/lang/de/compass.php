@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => 'Willkommen beim Voyager Kompass. Jede gute App braucht einen Kompass um einen in die richtige Richtung zu lenken.
+    'welcome'                => 'Willkommen beim AdminModule Kompass. Jede gute App braucht einen Kompass um einen in die richtige Richtung zu lenken.
     In dieser Sektion finden Sie viele Ressourcen und administrative Ausgaben die Ihnen beim Bauen Ihrer App helfen.',
     'links'         => [
         'title'                 => 'Links',
         'documentation'         => 'Dokumentation',
-        'voyager_homepage'      => 'Voyager Homepage',
+        'voyager_homepage'      => 'AdminModule Homepage',
     ],
     'commands'      => [
         'title'                 => 'Befehle',
-        'text'                  => 'Artisan Befehle aus Voyager ausführen.',
+        'text'                  => 'Artisan Befehle aus AdminModule ausführen.',
         'clear_output'          => 'ausgabe leeren',
         'command_output'        => 'Artisan Befehl-Ausgabe',
         'additional_args'       => 'Zusätzliche Argumente?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Ressourcen',
-        'text'                  => 'Voyager Ressourcen helfen Ihnen Dinge schneller zu finden.',
+        'text'                  => 'AdminModule Ressourcen helfen Ihnen Dinge schneller zu finden.',
     ],
     'logs'          => [
         'title'                 => 'Logs',
@@ -36,7 +36,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Schriftarten',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'AdminModule Fonts Class Mapping',
+        'font_character'        => 'AdminModule Fonts Character Mapping',
     ],
 ];

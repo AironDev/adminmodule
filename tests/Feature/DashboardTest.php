@@ -3,7 +3,7 @@
 namespace Modules\Admin\Tests\Feature;
 
 use Illuminate\Support\Facades\Auth;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Tests\TestCase;
 
 class DashboardTest extends TestCase
@@ -126,6 +126,6 @@ class DashboardTest extends TestCase
         Auth::loginUsingId(1);
 
         $this->visit(route('voyager.dashboard'))
-             ->see(Voyager::getVersion());
+             ->see(AdminModule::getVersion());
     }
 }

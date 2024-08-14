@@ -3,5 +3,5 @@
 return [
     'loggingin' 		   => 'Logga in',
     'signin_below' 		=> 'Logga in nedan:',
-    'welcome' 			    => 'Välkommen till Voyager. Den saknade Admin-panelen för Laravel',
+    'welcome' 			    => 'Välkommen till AdminModule. Den saknade Admin-panelen för Laravel',
 ];

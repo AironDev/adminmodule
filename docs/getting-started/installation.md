@@ -1,6 +1,6 @@
 # Installation
 
-Voyager is super easy to install. After creating your new Laravel application you can include the Voyager package with the following command:
+AdminModule is super easy to install. After creating your new Laravel application you can include the AdminModule package with the following command:
 
 ```bash
 composer require tcg/voyager
@@ -16,9 +16,9 @@ DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
 
-Finally, we can install Voyager. You can choose to install Voyager with dummy data or without the dummy data. The dummy data will include 1 admin account \(if no users already exist\), 1 demo page, 4 demo posts, 2 categories and 7 settings.
+Finally, we can install AdminModule. You can choose to install AdminModule with dummy data or without the dummy data. The dummy data will include 1 admin account \(if no users already exist\), 1 demo page, 4 demo posts, 2 categories and 7 settings.
 
-To install Voyager without dummy data simply run
+To install AdminModule without dummy data simply run
 
 ```bash
 php artisan voyager:install
@@ -65,19 +65,19 @@ And you will be prompted for the users name and password.
 
 ## Advanced
 
-This section is meant for users who are installing Voyager on an already existing Laravel installation or for users who want to perform a manual install. If this is not the case, you should go back to the [installation](installation.md) documentation or skip this section.
+This section is meant for users who are installing AdminModule on an already existing Laravel installation or for users who want to perform a manual install. If this is not the case, you should go back to the [installation](installation.md) documentation or skip this section.
 
-The first thing you should do is publish the assets that come with Voyager. You can do that by running the following commands:
+The first thing you should do is publish the assets that come with AdminModule. You can do that by running the following commands:
 
 ```bash
-php artisan vendor:publish --provider="Modules\Admin\VoyagerServiceProvider"
+php artisan vendor:publish --provider="Modules\Admin\AdminModuleServiceProvider"
 php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"
 ```
 
-Next, call `php artisan migrate` to migrate all Voyager table.
+Next, call `php artisan migrate` to migrate all AdminModule table.
 
 {% hint style="info" %}
-If you want to change migrations, for example to use a different table for users, don't migrate. Instead copy Voyagers migrations to `database/migrations`, make your changes, turn off the config option `database.autoload_migrations` and then migrate.
+If you want to change migrations, for example to use a different table for users, don't migrate. Instead copy AdminModules migrations to `database/migrations`, make your changes, turn off the config option `database.autoload_migrations` and then migrate.
 {% endhint %}
 
 Now, open your User-Model \(usually `app/User.php`\) and make the class extend `\Modules\Admin\Models\User` instead of `Authenticatable`.
@@ -91,18 +91,18 @@ class User extends \Modules\Admin\Models\User
 }
 ```
 
-The next step is to add Voyagers routes to your `routes/web.php` file:
+The next step is to add AdminModules routes to your `routes/web.php` file:
 
 ```php
 <?php
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+    AdminModule::routes();
 });
 ```
 
 Now run  
-`php artisan db:seed --class=VoyagerDatabaseSeeder`  
+`php artisan db:seed --class=AdminModuleDatabaseSeeder`  
 to seed some necessary data to your database, and  
 `php artisan storage:link`  
 to create the storage symlink to your public folder.

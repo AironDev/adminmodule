@@ -3,5 +3,5 @@
 return [
     'loggingin'    => 'ورود',
     'signin_below' => 'در زیر وارد شوید:',
-    'welcome'      => 'به Voyager پنل ادمینی که لاراول کم داشت خوش آمدید!',
+    'welcome'      => 'به AdminModule پنل ادمینی که لاراول کم داشت خوش آمدید!',
 ];

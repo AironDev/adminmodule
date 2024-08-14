@@ -218,7 +218,7 @@
                             <div class="form-group">
                                 <label for="category_id">{{ __('voyager::post.category') }}</label>
                                 <select class="form-control" name="category_id">
-                                    @foreach(Voyager::model('Category')::all() as $category)
+                                    @foreach(AdminModule::model('Category')::all() as $category)
                                         <option value="{{ $category->id }}"@if(isset($dataTypeContent->category_id) && $dataTypeContent->category_id == $category->id) selected="selected"@endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
@@ -240,7 +240,7 @@
                         </div>
                         <div class="panel-body">
                             @if(isset($dataTypeContent->image))
-                                <img src="{{ filter_var($dataTypeContent->image, FILTER_VALIDATE_URL) ? $dataTypeContent->image : Voyager::image( $dataTypeContent->image ) }}" style="width:100%" />
+                                <img src="{{ filter_var($dataTypeContent->image, FILTER_VALIDATE_URL) ? $dataTypeContent->image : AdminModule::image( $dataTypeContent->image ) }}" style="width:100%" />
                             @endif
                             <input type="file" name="image">
                         </div>

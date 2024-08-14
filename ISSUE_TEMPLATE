@@ -6,7 +6,7 @@ PLEASE CONSIDER USING ONE OF THE DEFINED TEMPLATES INSTEAD
 ## Version information
 <!--- The following information is strongly encouraged --->
  - Laravel: v#.#.#
- - Voyager: v#.#.#
+ - AdminModule: v#.#.#
  - PHP: #.#
  - Database: [type] [version] (e.g. MySQL 8.0)
 

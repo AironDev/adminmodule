@@ -1,6 +1,6 @@
 # Multilanguage
 
-Voyager supports multiple languages for your models.To get started, you need to configure some things first.
+AdminModule supports multiple languages for your models.To get started, you need to configure some things first.
 
 ## Setup
 
@@ -88,12 +88,12 @@ If you do not define locale, the current application locale will be used. You ca
 
 ```php
 // with string
-if (Voyager::translatable(Post::class)) {
+if (AdminModule::translatable(Post::class)) {
     // it's translatable
 }
 
 // with object of Model or Collection
-if (Voyager::translatable($post)) {
+if (AdminModule::translatable($post)) {
     // it's translatable
 }
 ```

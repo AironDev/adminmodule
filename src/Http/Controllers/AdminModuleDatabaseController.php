@@ -16,15 +16,15 @@ use Modules\Admin\Database\Types\Type;
 use Modules\Admin\Events\TableAdded;
 use Modules\Admin\Events\TableDeleted;
 use Modules\Admin\Events\TableUpdated;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerDatabaseController extends Controller
+class AdminModuleDatabaseController extends Controller
 {
     public function index()
     {
         $this->authorize('browse_database');
 
-        $dataTypes = Voyager::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
+        $dataTypes = AdminModule::model('DataType')->select('id', 'name', 'slug')->get()->keyBy('name')->toArray();
 
         $tables = array_map(function ($table) use ($dataTypes) {
             $table = Str::replaceFirst(DB::getTablePrefix(), '', $table);
@@ -39,7 +39,7 @@ class VoyagerDatabaseController extends Controller
             return (object) $table;
         }, SchemaManager::listTableNames());
 
-        return Voyager::view('voyager::tools.database.index')->with(compact('dataTypes', 'tables'));
+        return AdminModule::view('voyager::tools.database.index')->with(compact('dataTypes', 'tables'));
     }
 
     /**
@@ -53,7 +53,7 @@ class VoyagerDatabaseController extends Controller
 
         $db = $this->prepareDbManager('create');
 
-        return Voyager::view('voyager::tools.database.edit-add', compact('db'));
+        return AdminModule::view('voyager::tools.database.edit-add', compact('db'));
     }
 
     /**
@@ -131,7 +131,7 @@ class VoyagerDatabaseController extends Controller
 
         $db = $this->prepareDbManager('update', $table);
 
-        return Voyager::view('voyager::tools.database.edit-add', compact('db'));
+        return AdminModule::view('voyager::tools.database.edit-add', compact('db'));
     }
 
     /**
@@ -244,7 +244,7 @@ class VoyagerDatabaseController extends Controller
         $this->authorize('browse_database');
 
         $additional_attributes = [];
-        $model_name = Voyager::model('DataType')->where('name', $table)->pluck('model_name')->first();
+        $model_name = AdminModule::model('DataType')->where('name', $table)->pluck('model_name')->first();
         if (isset($model_name)) {
             $model = app($model_name);
             if (isset($model->additional_attributes)) {

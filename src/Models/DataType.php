@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Modules\Admin\Database\Schema\SchemaManager;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Traits\Translatable;
 
 class DataType extends Model
@@ -39,7 +39,7 @@ class DataType extends Model
 
     public function rows()
     {
-        return $this->hasMany(Voyager::modelClass('DataRow'))->orderBy('order');
+        return $this->hasMany(AdminModule::modelClass('DataRow'))->orderBy('order');
     }
 
     public function browseRows()
@@ -69,7 +69,7 @@ class DataType extends Model
 
     public function lastRow()
     {
-        return $this->hasMany(Voyager::modelClass('DataRow'))->orderBy('order', 'DESC')->first();
+        return $this->hasMany(AdminModule::modelClass('DataRow'))->orderBy('order', 'DESC')->first();
     }
 
     public function setGeneratePermissionsAttribute($value)
@@ -136,7 +136,7 @@ class DataType extends Model
 
                 // It seems everything was fine. Let's check if we need to generate permissions
                 if ($this->generate_permissions) {
-                    Voyager::model('Permission')->generateFor($this->name);
+                    AdminModule::model('Permission')->generateFor($this->name);
                 }
 
                 DB::commit();

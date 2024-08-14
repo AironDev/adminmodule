@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Constraint;
 use Intervention\Image\Facades\Image;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerController extends Controller
+class AdminModuleController extends Controller
 {
     public function index()
     {
-        return Voyager::view('voyager::index');
+        return AdminModule::view('voyager::index');
     }
 
     public function logout()
@@ -33,7 +33,7 @@ class VoyagerController extends Controller
         $slug = $request->input('type_slug');
         $file = $request->file('image');
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->firstOrFail();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->firstOrFail();
 
         if ($this->userCannotUploadImageIn($dataType, 'add') && $this->userCannotUploadImageIn($dataType, 'edit')) {
             abort(403);
@@ -76,7 +76,7 @@ class VoyagerController extends Controller
         }
 
         // Return URL for TinyMCE
-        return Voyager::image($fullFilename);
+        return AdminModule::image($fullFilename);
     }
 
     public function assets(Request $request)

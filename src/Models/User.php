@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Admin\Contracts\User as UserContract;
 use Modules\Admin\Tests\Database\Factories\UserFactory;
-use Modules\Admin\Traits\VoyagerUser;
+use Modules\Admin\Traits\AdminModuleUser;
 
 class User extends Authenticatable implements UserContract
 {
-    use VoyagerUser, HasFactory;
+    use AdminModuleUser, HasFactory;
 
     protected $guarded = [];
 

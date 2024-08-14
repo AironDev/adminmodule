@@ -5,9 +5,9 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerAuthController extends Controller
+class AdminModuleAuthController extends Controller
 {
     use AuthenticatesUsers;
 
@@ -17,7 +17,7 @@ class VoyagerAuthController extends Controller
             return redirect()->route('voyager.dashboard');
         }
 
-        return Voyager::view('voyager::login');
+        return AdminModule::view('voyager::login');
     }
 
     public function postLogin(Request $request)
@@ -62,6 +62,6 @@ class VoyagerAuthController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard(app('VoyagerGuard'));
+        return Auth::guard(app('AdminModuleGuard'));
     }
 }

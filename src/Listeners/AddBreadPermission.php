@@ -3,7 +3,7 @@
 namespace Modules\Admin\Listeners;
 
 use Modules\Admin\Events\BreadAdded;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class AddBreadPermission
 {
@@ -30,10 +30,10 @@ class AddBreadPermission
             // Create permission
             //
             // Permission::generateFor(Str::snake($bread->dataType->slug));
-            $role = Voyager::model('Role')->where('name', config('voyager.bread.default_role'))->firstOrFail();
+            $role = AdminModule::model('Role')->where('name', config('voyager.bread.default_role'))->firstOrFail();
 
             // Get permission for added table
-            $permissions = Voyager::model('Permission')->where(['table_name' => $bread->dataType->name])->get()->pluck('id')->all();
+            $permissions = AdminModule::model('Permission')->where(['table_name' => $bread->dataType->name])->get()->pluck('id')->all();
 
             // Assign permission to admin
             $role->permissions()->attach($permissions);

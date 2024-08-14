@@ -29,7 +29,7 @@
                                         @include($dataRow->details->view, ['row' => $dataRow, 'dataType' => $dataType, 'dataTypeContent' => $result, 'content' => $result->{$display_column}, 'action' => 'order'])
                                     @elseif($dataRow->type == 'image')
                                         <span>
-                                            <img src="@if( !filter_var($result->{$display_column}, FILTER_VALIDATE_URL)){{ Voyager::image( $result->{$display_column} ) }}@else{{ $result->{$display_column} }}@endif" style="height:100px">
+                                            <img src="@if( !filter_var($result->{$display_column}, FILTER_VALIDATE_URL)){{ AdminModule::image( $result->{$display_column} ) }}@else{{ $result->{$display_column} }}@endif" style="height:100px">
                                         </span>
                                     @else
                                         <span>{{ $result->{$display_column} }}</span>

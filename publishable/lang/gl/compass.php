@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => 'Benvido a Voyager Compass. Toda boa aplicación precisa un compás para sinalarnos a dirección correcta.
+    'welcome'                => 'Benvido a AdminModule Compass. Toda boa aplicación precisa un compás para sinalarnos a dirección correcta.
     Nesta sección atoparás moitos recursos e tarefas administrativas para axudarche a medida que compilas a túa aplicación.',
     'links'         => [
         'title'                 => 'Enlaces',
         'documentation'         => 'Documentación',
-        'voyager_homepage'      => 'Voyager Homepage',
+        'voyager_homepage'      => 'AdminModule Homepage',
     ],
     'commands'      => [
         'title'                 => 'Comandos',
-        'text'                  => 'Executar comandos de Artisan dende Voyager.',
+        'text'                  => 'Executar comandos de Artisan dende AdminModule.',
         'clear_output'          => 'limpar saída',
         'command_output'        => 'Saída de comandos de Artisan',
         'additional_args'       => 'Argumentos adicionais?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Recursos',
-        'text'                  => 'Recursos de Voyager para axudarche a atopar as cousas máis rápido.',
+        'text'                  => 'Recursos de AdminModule para axudarche a atopar as cousas máis rápido.',
 
     ],
     'logs'          => [
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Fonts',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'AdminModule Fonts Class Mapping',
+        'font_character'        => 'AdminModule Fonts Character Mapping',
     ],
 ];

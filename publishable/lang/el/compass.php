@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'welcome'                => 'Καλωσήρθατε στην Πυξίδα Voyager. Κάθε καλή εφαρμογή χρειάζεται μία πυξίδα για να σας καθοδηγήσει προς τη σωστή κατεύθυνση. Σε αυτό τον τομέα θα βρείτε πολλές πηγές και ενέργειες διαχείρισης που θα σας βοηθήσουν όσο χτίζετε την εφαρμογή σας.',
+    'welcome'                => 'Καλωσήρθατε στην Πυξίδα AdminModule. Κάθε καλή εφαρμογή χρειάζεται μία πυξίδα για να σας καθοδηγήσει προς τη σωστή κατεύθυνση. Σε αυτό τον τομέα θα βρείτε πολλές πηγές και ενέργειες διαχείρισης που θα σας βοηθήσουν όσο χτίζετε την εφαρμογή σας.',
     'links'                  => [
         'title'                 => 'Σύνδεσμοι',
         'documentation'         => 'Τεκμηρίωση',
-        'voyager_homepage'      => 'Αρχική σελίδα Voyager',
+        'voyager_homepage'      => 'Αρχική σελίδα AdminModule',
     ],
     'commands'      => [
         'title'                 => 'Εντολές',
-        'text'                  => 'Τρέξτε Artisan εντολές μέσα από το Voyager.',
+        'text'                  => 'Τρέξτε Artisan εντολές μέσα από το AdminModule.',
         'clear_output'          => 'Καθαρισμός εξόδου',
         'command_output'        => 'Έξοδος εντολής Artisan',
         'additional_args'       => 'Επιπλέον παράμετροι;',
@@ -17,7 +17,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Πηγές',
-        'text'                  => 'Πηγές για το Voyager ώστε να βρείτε ό,τι ψάχνετε γρηγορότερα.',
+        'text'                  => 'Πηγές για το AdminModule ώστε να βρείτε ό,τι ψάχνετε γρηγορότερα.',
 
     ],
     'logs'          => [
@@ -37,7 +37,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Γραμματοσειρές',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'AdminModule Fonts Class Mapping',
+        'font_character'        => 'AdminModule Fonts Character Mapping',
     ],
 ];

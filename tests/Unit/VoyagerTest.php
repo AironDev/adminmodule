@@ -3,10 +3,10 @@
 namespace Modules\Admin\Tests\Unit;
 
 use Illuminate\Support\Facades\Config;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Tests\TestCase;
 
-class VoyagerTest extends TestCase
+class AdminModuleTest extends TestCase
 {
     /**
      * Dimmers returns an array filled with widget collections.
@@ -21,7 +21,7 @@ class VoyagerTest extends TestCase
             'Modules\\Admin\\Tests\\Stubs\\Widgets\\AccessibleDimmer',
         ]);
 
-        $dimmers = Voyager::dimmers();
+        $dimmers = AdminModule::dimmers();
 
         $this->assertEquals(2, $dimmers[0]->count());
     }
@@ -40,7 +40,7 @@ class VoyagerTest extends TestCase
             'Modules\\Admin\\Tests\\Stubs\\Widgets\\InAccessibleDimmer',
         ]);
 
-        $dimmers = Voyager::dimmers();
+        $dimmers = AdminModule::dimmers();
 
         $this->assertEquals(1, $dimmers[0]->count());
     }
@@ -61,7 +61,7 @@ class VoyagerTest extends TestCase
             'Modules\\Admin\\Tests\\Stubs\\Widgets\\AccessibleDimmer',
         ]);
 
-        $dimmers = Voyager::dimmers();
+        $dimmers = AdminModule::dimmers();
 
         $this->assertEquals(2, count($dimmers));
         $this->assertEquals(3, $dimmers[0]->count());

@@ -3,14 +3,14 @@
 if (!function_exists('setting')) {
     function setting($key, $default = null)
     {
-        return Modules\Admin\Facades\Voyager::setting($key, $default);
+        return Modules\Admin\Facades\AdminModule::setting($key, $default);
     }
 }
 
 if (!function_exists('menu')) {
     function menu($menuName, $type = null, array $options = [])
     {
-        return Modules\Admin\Facades\Voyager::model('Menu')->display($menuName, $type, $options);
+        return Modules\Admin\Facades\AdminModule::model('Menu')->display($menuName, $type, $options);
     }
 }
 

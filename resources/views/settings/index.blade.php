@@ -256,7 +256,7 @@
                                     <a href="{{ route('voyager.settings.move_down', $setting->id) }}">
                                         <i class="sort-icons voyager-sort-desc"></i>
                                     </a>
-                                    @can('delete', Voyager::model('Setting'))
+                                    @can('delete', AdminModule::model('Setting'))
                                     <i class="voyager-trash"
                                        data-id="{{ $setting->id }}"
                                        data-display-key="{{ $setting->key }}"
@@ -360,7 +360,7 @@
 
         <div style="clear:both"></div>
 
-        @can('add', Voyager::model('Setting'))
+        @can('add', AdminModule::model('Setting'))
         <div class="panel" style="margin-top:10px;">
             <div class="panel-heading new-setting">
                 <hr>
@@ -425,7 +425,7 @@
         @endcan
     </div>
 
-    @can('delete', Voyager::model('Setting'))
+    @can('delete', AdminModule::model('Setting'))
     <div class="modal modal-danger fade" tabindex="-1" id="delete_modal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -464,7 +464,7 @@
                 }
             });
 
-            @can('delete', Voyager::model('Setting'))
+            @can('delete', AdminModule::model('Setting'))
             $('.panel-actions .voyager-trash').click(function () {
                 var display = $(this).data('display-name') + '/' + $(this).data('display-key');
 

@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'           => 'Välkommen till Voyager Compass. Alla bra appar behöver in kompass som visar riktningen.
+    'welcome'           => 'Välkommen till AdminModule Compass. Alla bra appar behöver in kompass som visar riktningen.
     I denna avdelning hittar du resurser som hjälper dig att bygga din applikation',
     'links' => [
         'title'                 => 'Länkar',
         'documentation'         => 'Dokumentation',
-        'voyager_homepage'      => 'Voyager Hemsida',
+        'voyager_homepage'      => 'AdminModule Hemsida',
     ],
     'commands' => [
         'title'                 => 'Kommandon',
-        'text'                  => 'Kör Artisan Kommandon från Voyager.',
+        'text'                  => 'Kör Artisan Kommandon från AdminModule.',
         'clear_output'          => 'rensa utdata',
         'command_output'        => 'Artisan Kommando Utdata',
         'additional_args'       => 'Lägg till argument?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources' => [
         'title'                 => 'Resurser',
-        'text'                  => 'Voyager resurser som hjälper dig hitta snabbare.',
+        'text'                  => 'AdminModule resurser som hjälper dig hitta snabbare.',
     ],
     'logs' => [
         'title'                 => 'Loggar',
@@ -36,7 +36,7 @@ return [
     ],
     'fonts' => [
         'title'                 => 'Typsnitt',
-        'font_class'            => 'Voyager Typsnitt Klasser',
-        'font_character'        => 'Voyager Typsnitt Tecken',
+        'font_class'            => 'AdminModule Typsnitt Klasser',
+        'font_character'        => 'AdminModule Typsnitt Tecken',
     ],
 ];

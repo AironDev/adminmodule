@@ -91,7 +91,7 @@
                             <div class="form-group">
                                 <label for="locale">{{ __('voyager::generic.locale') }}</label>
                                 <select class="form-control select2" id="locale" name="locale">
-                                    @foreach (Voyager::getLocales() as $locale)
+                                    @foreach (AdminModule::getLocales() as $locale)
                                     <option value="{{ $locale }}"
                                     {{ ($locale == $selected_locale ? 'selected' : '') }}>{{ $locale }}</option>
                                     @endforeach
@@ -106,7 +106,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 @if(isset($dataTypeContent->avatar))
-                                    <img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : Voyager::image( $dataTypeContent->avatar ) }}" style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
+                                    <img src="{{ filter_var($dataTypeContent->avatar, FILTER_VALIDATE_URL) ? $dataTypeContent->avatar : AdminModule::image( $dataTypeContent->avatar ) }}" style="width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
                                 @endif
                                 <input type="file" data-name="avatar" name="avatar">
                             </div>

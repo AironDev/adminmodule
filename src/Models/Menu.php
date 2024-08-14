@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Modules\Admin\Events\MenuDisplay;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 /**
  * @todo: Refactor this class by using something like MenuBuilder Helper.
@@ -32,12 +32,12 @@ class Menu extends Model
 
     public function items()
     {
-        return $this->hasMany(Voyager::modelClass('MenuItem'));
+        return $this->hasMany(AdminModule::modelClass('MenuItem'));
     }
 
     public function parent_items()
     {
-        return $this->hasMany(Voyager::modelClass('MenuItem'))
+        return $this->hasMany(AdminModule::modelClass('MenuItem'))
             ->whereNull('parent_id');
     }
 

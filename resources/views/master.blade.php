@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 
     <!-- Favicon -->
-    <?php $admin_favicon = Voyager::setting('admin.icon_image', ''); ?>
+    <?php $admin_favicon = AdminModule::setting('admin.icon_image', ''); ?>
     @if($admin_favicon == '')
         <link rel="shortcut icon" href="{{ voyager_asset('images/logo-icon.png') }}" type="image/png">
     @else
-        <link rel="shortcut icon" href="{{ Voyager::image($admin_favicon) }}" type="image/png">
+        <link rel="shortcut icon" href="{{ AdminModule::image($admin_favicon) }}" type="image/png">
     @endif
 
 
@@ -55,11 +55,11 @@
 <body class="voyager @if(isset($dataType) && isset($dataType->slug)){{ $dataType->slug }}@endif">
 
 <div id="voyager-loader">
-    <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
+    <?php $admin_loader_img = AdminModule::setting('admin.loader', ''); ?>
     @if($admin_loader_img == '')
-        <img src="{{ voyager_asset('images/logo-icon.png') }}" alt="Voyager Loader">
+        <img src="{{ voyager_asset('images/logo-icon.png') }}" alt="AdminModule Loader">
     @else
-        <img src="{{ Voyager::image($admin_loader_img) }}" alt="Voyager Loader">
+        <img src="{{ AdminModule::image($admin_loader_img) }}" alt="AdminModule Loader">
     @endif
 </div>
 
@@ -67,7 +67,7 @@
 if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'https://')) {
     $user_avatar = Auth::user()->avatar;
 } else {
-    $user_avatar = Voyager::image(Auth::user()->avatar);
+    $user_avatar = AdminModule::image(Auth::user()->avatar);
 }
 ?>
 

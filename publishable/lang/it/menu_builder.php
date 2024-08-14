@@ -10,7 +10,7 @@ return [
     'dynamic_route'        => 'Percorso Dinamico',
     'edit_item'            => 'Modifica Elemento di Menù',
     'icon_class'           => 'Classe Font Icon per l\'elemento del menù (usare una',
-    'icon_class2'          => 'Voyager Font Class</a>)',
+    'icon_class2'          => 'AdminModule Font Class</a>)',
     'icon_class_ph'        => 'Icon Class (opzionale)',
     'item_route'           => 'Percorso per l\'elemento del menù',
     'item_title'           => 'Titolo dell\'elemento del menù',

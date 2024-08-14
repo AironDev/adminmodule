@@ -3,19 +3,19 @@
 namespace Modules\Admin\Traits;
 
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 /**
  * @property  \Illuminate\Database\Eloquent\Collection  roles
  */
-trait VoyagerUser
+trait AdminModuleUser
 {
     /**
      * Return default User Role.
      */
     public function role()
     {
-        return $this->belongsTo(Voyager::modelClass('Role'));
+        return $this->belongsTo(AdminModule::modelClass('Role'));
     }
 
     /**
@@ -23,7 +23,7 @@ trait VoyagerUser
      */
     public function roles()
     {
-        return $this->belongsToMany(Voyager::modelClass('Role'), 'user_roles', 'user_id', 'role_id');
+        return $this->belongsToMany(AdminModule::modelClass('Role'), 'user_roles', 'user_id', 'role_id');
     }
 
     /**
@@ -63,7 +63,7 @@ trait VoyagerUser
      */
     public function setRole($name)
     {
-        $role = Voyager::model('Role')->where('name', '=', $name)->first();
+        $role = AdminModule::model('Role')->where('name', '=', $name)->first();
 
         if ($role) {
             $this->role()->associate($role);

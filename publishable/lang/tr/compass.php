@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'welcome'                => 'Voyager Pusula\'ya hoşgeldiniz. Her iyi uygulama doğru istikamette ilerlemek için bir pusulaya ihtiyaç duyar.
+    'welcome'                => 'AdminModule Pusula\'ya hoşgeldiniz. Her iyi uygulama doğru istikamette ilerlemek için bir pusulaya ihtiyaç duyar.
     Bu bölümde uygulamanızı geliştirirken size rehberlik edecek bir çok kaynak ve yönetimsel görev bulacaksınız.',
     'links'         => [
         'title'                 => 'Bağlantılar',
         'documentation'         => 'Dokümantasyon',
-        'voyager_homepage'      => 'Voyager Anasayfa',
+        'voyager_homepage'      => 'AdminModule Anasayfa',
     ],
     'commands'      => [
         'title'                 => 'Komutlar',
-        'text'                  => 'Artisan Komutlarını Voyager\'dan Çalıştır.',
+        'text'                  => 'Artisan Komutlarını AdminModule\'dan Çalıştır.',
         'clear_output'          => 'çıktıyı temizle',
         'command_output'        => 'Artisan Komut Çıktısı',
         'additional_args'       => 'İlave Argümanlar?',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Kaynaklar',
-        'text'                  => 'Aradığınız şeyleri bulmanızı kolaylaştıracak Voyager kaynakları.',
+        'text'                  => 'Aradığınız şeyleri bulmanızı kolaylaştıracak AdminModule kaynakları.',
 
     ],
     'logs'          => [
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'İkonlar',
-        'font_class'            => 'Voyager İkon Class Eşleştirmesi',
-        'font_character'        => 'Voyager İkon Karakter Eşleştirmesi',
+        'font_class'            => 'AdminModule İkon Class Eşleştirmesi',
+        'font_character'        => 'AdminModule İkon Karakter Eşleştirmesi',
     ],
 ];

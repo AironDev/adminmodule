@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="name">{{ $row->getTranslatedAttribute('display_name') }}</label>
 
-                                    {!! Voyager::formField($row, $dataType, $dataTypeContent) !!}
+                                    {!! AdminModule::formField($row, $dataType, $dataTypeContent) !!}
 
                                 </div>
                             @endforeach
@@ -60,7 +60,7 @@
                                 <?php
                                     $role_permissions = (isset($dataTypeContent)) ? $dataTypeContent->permissions->pluck('key')->toArray() : [];
                                 ?>
-                                @foreach(Voyager::model('Permission')->all()->groupBy('table_name') as $table => $permission)
+                                @foreach(AdminModule::model('Permission')->all()->groupBy('table_name') as $table => $permission)
                                     <li>
                                         <input type="checkbox" id="{{$table}}" class="permission-group">
                                         <label for="{{$table}}"><strong>{{\Illuminate\Support\Str::title(str_replace('_',' ', $table))}}</strong></label>

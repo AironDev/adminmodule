@@ -3,16 +3,16 @@
 namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerRoleController extends VoyagerBaseController
+class AdminModuleRoleController extends AdminModuleBaseController
 {
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('edit', app($dataType->model_name));
@@ -38,7 +38,7 @@ class VoyagerRoleController extends VoyagerBaseController
     {
         $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+        $dataType = AdminModule::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
         $this->authorize('add', app($dataType->model_name));

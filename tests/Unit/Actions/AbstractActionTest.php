@@ -3,7 +3,7 @@
 namespace Modules\Admin\Tests\Unit\Actions;
 
 use Modules\Admin\Actions\AbstractAction;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Models\User;
 use Modules\Admin\Tests\TestCase;
 
@@ -27,7 +27,7 @@ class AbstractActionTest extends TestCase
     {
         parent::setUp();
 
-        $this->userDataType = Voyager::model('DataType')->where('name', 'users')->first();
+        $this->userDataType = AdminModule::model('DataType')->where('name', 'users')->first();
         $this->user = \Modules\Admin\Models\User::factory()->create();
     }
 

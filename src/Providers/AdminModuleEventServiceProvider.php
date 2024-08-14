@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Event;
 use Modules\Admin\Events;
 use Modules\Admin\Listeners;
 
-class VoyagerEventServiceProvider extends ServiceProvider
+class AdminModuleEventServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.

@@ -20,7 +20,7 @@ class SettingsTest extends TestCase
     public function testCanUpdateSettings()
     {
         $key = 'site.title';
-        $newTitle = 'Just Another LaravelVoyager.com Site';
+        $newTitle = 'Just Another LaravelAdminModule.com Site';
 
         $this->visit(route('voyager.settings.index'))
              ->seeInField($key, Setting::where('key', '=', $key)->first()->value)

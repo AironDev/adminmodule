@@ -5,7 +5,7 @@ namespace Modules\Admin\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class VoyagerAdminMiddleware
+class AdminModuleAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class VoyagerAdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        auth()->setDefaultDriver(app('VoyagerGuard'));
+        auth()->setDefaultDriver(app('AdminModuleGuard'));
 
         if (!Auth::guest()) {
             $user = Auth::user();

@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Modules\Admin\Events\MediaFileAdded;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
-class VoyagerMediaController extends Controller
+class AdminModuleMediaController extends Controller
 {
     /** @var string */
     private $filesystem;
@@ -29,7 +29,7 @@ class VoyagerMediaController extends Controller
         // Check permission
         $this->authorize('browse_media');
 
-        return Voyager::view('voyager::media.index');
+        return AdminModule::view('voyager::media.index');
     }
 
     public function files(Request $request)

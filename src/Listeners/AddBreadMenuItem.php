@@ -3,7 +3,7 @@
 namespace Modules\Admin\Listeners;
 
 use Modules\Admin\Events\BreadAdded;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 
 class AddBreadMenuItem
 {
@@ -27,16 +27,16 @@ class AddBreadMenuItem
     public function handle(BreadAdded $bread)
     {
         if (config('voyager.bread.add_menu_item') && file_exists(base_path('routes/web.php'))) {
-            $menu = Voyager::model('Menu')->where('name', config('voyager.bread.default_menu'))->firstOrFail();
+            $menu = AdminModule::model('Menu')->where('name', config('voyager.bread.default_menu'))->firstOrFail();
 
-            $menuItem = Voyager::model('MenuItem')->firstOrNew([
+            $menuItem = AdminModule::model('MenuItem')->firstOrNew([
                 'menu_id' => $menu->id,
                 'title'   => $bread->dataType->getTranslatedAttribute('display_name_plural'),
                 'url'     => '',
                 'route'   => 'voyager.'.$bread->dataType->slug.'.index',
             ]);
 
-            $order = Voyager::model('MenuItem')->highestOrderMenuItem();
+            $order = AdminModule::model('MenuItem')->highestOrderMenuItem();
 
             if (!$menuItem->exists) {
                 $menuItem->fill([

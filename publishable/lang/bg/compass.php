@@ -1,17 +1,17 @@
 <?php
 
 return [
-    'welcome'                => 'Добре дошли във Voyager Compass. Всяка хубава апликация има нужда от компас да насочва потребителите към правилната посока.
+    'welcome'                => 'Добре дошли във AdminModule Compass. Всяка хубава апликация има нужда от компас да насочва потребителите към правилната посока.
 
     В тази секция ще намерите много ресурси и административки задачи, които ще ви помогнат да създадете вашата апликация.',
     'links'         => [
         'title'                 => 'Линкове',
         'documentation'         => 'Документация',
-        'voyager_homepage'      => 'Начална страница на Voyager',
+        'voyager_homepage'      => 'Начална страница на AdminModule',
     ],
     'commands'      => [
         'title'                 => 'Команди',
-        'text'                  => 'Run Artisan команди от Voyager.',
+        'text'                  => 'Run Artisan команди от AdminModule.',
         'clear_output'          => 'изчистване на информация ',
         'command_output'        => 'Artisan Command Output',
         'additional_args'       => 'Допълнителни аргументи?',
@@ -19,7 +19,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Ресурси',
-        'text'                  => 'Voyager ресурси, които ще ви помогнат да намерите всичко по-бързо.',
+        'text'                  => 'AdminModule ресурси, които ще ви помогнат да намерите всичко по-бързо.',
 
     ],
     'logs'          => [
@@ -39,7 +39,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Фонтове',
-        'font_class'            => 'Voyager Fonts Class Mapping',
-        'font_character'        => 'Voyager Fonts Character Mapping',
+        'font_class'            => 'AdminModule Fonts Class Mapping',
+        'font_character'        => 'AdminModule Fonts Character Mapping',
     ],
 ];

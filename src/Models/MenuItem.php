@@ -4,7 +4,7 @@ namespace Modules\Admin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
-use Modules\Admin\Facades\Voyager;
+use Modules\Admin\Facades\AdminModule;
 use Modules\Admin\Traits\Translatable;
 
 class MenuItem extends Model
@@ -40,13 +40,13 @@ class MenuItem extends Model
 
     public function children()
     {
-        return $this->hasMany(Voyager::modelClass('MenuItem'), 'parent_id')
+        return $this->hasMany(AdminModule::modelClass('MenuItem'), 'parent_id')
             ->with('children');
     }
 
     public function menu()
     {
-        return $this->belongsTo(Voyager::modelClass('Menu'));
+        return $this->belongsTo(AdminModule::modelClass('Menu'));
     }
 
     public function link($absolute = false)

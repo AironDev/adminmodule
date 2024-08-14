@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'welcome'                => 'Voyager Compassa xoş gəlmisiniz. Bütün yaxşı tətbiqlərə Compass lazımdır ki, onun düzgün istiqamət göstərilsin.
+    'welcome'                => 'AdminModule Compassa xoş gəlmisiniz. Bütün yaxşı tətbiqlərə Compass lazımdır ki, onun düzgün istiqamət göstərilsin.
      Bu bölümdə tətbiqinizi yaratmağa kömək edəcək çoxlu resurs və administrativ misallar tapacaqsınız.',
     'links'         => [
         'title'                 => 'Linklər',
         'documentation'         => 'Dokumentasiya',
-        'voyager_homepage'      => 'Voyager səhifəsi',
+        'voyager_homepage'      => 'AdminModule səhifəsi',
     ],
     'commands'      => [
         'title'                 => 'Əmrlər',
@@ -18,7 +18,7 @@ return [
     ],
     'resources'     => [
         'title'                 => 'Resurslar',
-        'text'                  => 'Axtardığınızı tez tapmağa kömək edəcək Voyager resursları.',
+        'text'                  => 'Axtardığınızı tez tapmağa kömək edəcək AdminModule resursları.',
 
     ],
     'logs'          => [
@@ -38,7 +38,7 @@ return [
     ],
     'fonts'         => [
         'title'                 => 'Şriftlər',
-        'font_class'            => 'Voyager şriftinin siniflərinin xəritəsi',
-        'font_character'        => 'Voyager simvol siniflərinin xəritəsi',
+        'font_class'            => 'AdminModule şriftinin siniflərinin xəritəsi',
+        'font_character'        => 'AdminModule simvol siniflərinin xəritəsi',
     ],
 ];
